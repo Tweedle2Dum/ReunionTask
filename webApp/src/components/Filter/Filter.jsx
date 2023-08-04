@@ -26,7 +26,11 @@ export default function Filter({ filterData, data }) {
             filteredArray = filteredArray.filter(item => item.price <= parseInt(filterTerm.priceMax));
         }
         if (filterTerm.date) {
-            filteredArray = filteredArray.filter(item => item.date === filterTerm.date);
+            const filterDate = filterTerm.date.toDate();
+            filteredArray = filteredArray.filter(item=>{
+                const itemDate = new Date(item.date)
+                return itemDate.toLocaleDateString()===filterDate.toLocaleDateString()
+            });
         }
         if (filterTerm.propertyType) {
             filteredArray = filteredArray.filter(item => item.propertyType === filterTerm.propertyType);
