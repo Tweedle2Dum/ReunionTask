@@ -72,6 +72,7 @@ export default function Filter({ filterData, data }) {
         padding: "20px",
         display: "flex",
         alignItems: "center",
+        justifyContent:'center',
         gap: "20px",
         flexWrap: "wrap;",
       }}

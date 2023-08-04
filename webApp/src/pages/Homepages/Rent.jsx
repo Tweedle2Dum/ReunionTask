@@ -230,13 +230,13 @@ export default function Rent() {
     <>
       <Box sx={{
         display: 'flex',
-        justifyConent:'space-between',
+        justifyContent:{xs:'center',md:'space-between',lg:'space-between'},
         alignItems:'center',
         flexWrap:'wrap'
 
       }}>
-        <Typography variant='h3' margin={'20px 20px'}>Search properties to rent</Typography>
-        <Box marginLeft={'auto'}>
+        <Typography variant='h3' margin={'20px 20px'} sx={{fontSize:{xs:'28px',md:'48px',lg:'48px'}}}>Search properties to rent</Typography>
+        <Box >
           <Searchbar />
         </Box>
       </Box>
