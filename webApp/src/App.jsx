@@ -8,6 +8,8 @@ import {
   RouterProvider
 } from "react-router-dom";
 
+
+
 //layout 
 import HomeLayout from './layouts/HomeLayout';
 import AuthLayout from './layouts/AuthLayout';
@@ -21,7 +23,7 @@ import Sell from './pages/Homepages/Sell'
 
 
 
-function App() { 
+function App({ children }) {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -42,10 +44,9 @@ function App() {
   return (
 
     <CssBaseline>
+     
 
       <RouterProvider router={router}></RouterProvider>
-
-
     </CssBaseline>
   )
 }
