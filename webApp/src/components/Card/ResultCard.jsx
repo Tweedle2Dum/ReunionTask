@@ -11,7 +11,7 @@ export default function ResultCard({location,price,type}) {
 {/*     <Skeleton variant='rectangular' height={'200px'}></Skeleton>
  */}    
   
-    <Image src='../../../assets/random.jpg' maxHeigth="200px"></Image>
+    <Image src='/random.jpg' maxHeigth="200px"></Image>
         
  <CardContent>
       <Typography fontSize={'24px'} color={'primary'}>Rs {price}/month</Typography>
