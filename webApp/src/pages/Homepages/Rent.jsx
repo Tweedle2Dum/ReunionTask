@@ -223,14 +223,17 @@ const data = [
 
 export default function Rent() {
 
-  const [filteredData,setFilteredData] = useState([])
-  
+  const [filteredData, setFilteredData] = useState([])
+
 
   return (
     <>
       <Box sx={{
         display: 'flex',
-        alignItems: 'center'
+        justifyConent:'space-between',
+        alignItems:'center',
+        flexWrap:'wrap'
+
       }}>
         <Typography variant='h3' margin={'20px 20px'}>Search properties to rent</Typography>
         <Box marginLeft={'auto'}>
@@ -238,9 +241,9 @@ export default function Rent() {
         </Box>
       </Box>
       <Box margin={'60px 0 60px 0'}>
-      <Filter filterData = {setFilteredData} data={data} />
+        <Filter filterData={setFilteredData} data={data} /> {/* can be prolly moved to the HomeLayout with state lifting */}
       </Box>
-      <Results data={filteredData}/>
+      <Results data={filteredData} />
     </>
   )
 }

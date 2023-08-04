@@ -5,18 +5,19 @@ import CardContent from '@mui/material/CardContent';
 import { Skeleton, Typography,Box } from '@mui/material';
 import { Image } from 'mui-image'
 
-export default function ResultCard({location,price}) {
+export default function ResultCard({location,price,type}) {
   return (
    <Card variant='outlined'>
 {/*     <Skeleton variant='rectangular' height={'200px'}></Skeleton>
  */}    
-  <Box maxHeight={'200px'} margin={'0 0 40px 0'}>
-        <Image src='../../../assets/random.jpg'></Image>
-        </Box>
+  
+    <Image src='../../../assets/random.jpg' maxHeigth="200px"></Image>
+        
  <CardContent>
-      <Typography p>Rs {price}/month</Typography>
+      <Typography fontSize={'24px'} color={'primary'}>Rs {price}/month</Typography>
       <Typography p>{location}</Typography>
       <Typography p>ADDITIONAL ADDRESS</Typography>
+      <Typography p>Property Type: {type}</Typography>
 
     </CardContent>
    </Card>
