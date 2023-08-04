@@ -12,8 +12,8 @@ export const theme = createTheme({
         },
         custom: {
             elevatedBox: {
-                backgroundColor: '#f0f0f0', // Change to the desired lighter color
-                boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)', // Adjust the box shadow for the elevated effect
+                backgroundColor: '#f0f0f0', 
+                boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)', 
             },
         },
     },

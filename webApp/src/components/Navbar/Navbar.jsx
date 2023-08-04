@@ -30,26 +30,58 @@ export default function Navbar() {
               display: { xs: "none", md: "flex", lg: "flex" },
             }}
           >
-            <Box>
+            <Box
+              sx={{
+                borderRadius: "12px",
+                padding: "8px",
+                ":hover": {
+                  outline: "1px solid purple",
+                },
+              }}
+            >
               <Link component={NavLink} underline="none" to="/">
                 Rent
               </Link>
             </Box>
-            <Box>
+            <Box sx={{
+                borderRadius: "12px",
+                padding: "8px",
+                ":hover": {
+                  outline: "1px solid purple",
+                },
+              }}>
               <Link component={NavLink} underline="none" to="/buy">
                 Buy
               </Link>
             </Box>
-            <Box>
+            <Box sx={{
+                borderRadius: "12px",
+                padding: "8px",
+                ":hover": {
+                  outline: "1px solid purple",
+                },
+              }}>
               <Link component={NavLink} underline="none" to="/sell">
                 Sell
               </Link>
             </Box>
-            <Box display={"flex"} alignItems={"center"}>
+            <Box display={"flex"} alignItems={"center"} sx={{
+                borderRadius: "12px",
+                padding: "8px",
+                ":hover": {
+                  outline: "1px solid purple",
+                },
+              }}>
               Manage Property
               <KeyboardArrowDownIcon />
             </Box>
-            <Box display={"flex"} alignItems={"center"}>
+            <Box display={"flex"} alignItems={"center"} sx={{
+                borderRadius: "12px",
+                padding: "8px",
+                ":hover": {
+                  outline: "1px solid purple",
+                },
+              }}>
               Resources
               <KeyboardArrowDownIcon />
             </Box>
@@ -69,7 +101,12 @@ export default function Navbar() {
               Sign up
             </Button>
           </Box>
-          <Box sx={{ display: { xs: "block", md: "none", lg: "none" },marginLeft:'auto'}}>
+          <Box
+            sx={{
+              display: { xs: "block", md: "none", lg: "none" },
+              marginLeft: "auto",
+            }}
+          >
             <Sidebar />
           </Box>
         </Box>

@@ -15,9 +15,9 @@ export default function ResultCard({location,price,type}) {
         
  <CardContent>
       <Typography fontSize={'24px'} color={'primary'}>Rs {price}/month</Typography>
-      <Typography p>{location}</Typography>
-      <Typography p>ADDITIONAL ADDRESS</Typography>
-      <Typography p>Property Type: {type}</Typography>
+      <Typography p fontSize={'20px'}>{location}</Typography>
+      <Typography p fontSize={'14px'}color={'#666666'}>Some random address of the property</Typography>
+      <Typography p fontSize={'14px'}>Property Type: {type}</Typography>
 
     </CardContent>
    </Card>
