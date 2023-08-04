@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@emotion/react';
 import {
   createBrowserRouter,
   Route,
@@ -9,7 +10,8 @@ import {
 } from "react-router-dom";
 
 
-
+//themes
+import { theme } from './themes';
 //layout 
 import HomeLayout from './layouts/HomeLayout';
 import AuthLayout from './layouts/AuthLayout';
@@ -44,9 +46,10 @@ function App({ children }) {
   return (
 
     <CssBaseline>
-     
 
-      <RouterProvider router={router}></RouterProvider>
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router}></RouterProvider>
+      </ThemeProvider>
     </CssBaseline>
   )
 }

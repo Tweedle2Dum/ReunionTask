@@ -63,7 +63,6 @@ export default function Filter({ filterData, data }) {
     return (
         <Box sx={{
             margin: '20px 0',
-            border: '1px solid red',
             padding: '20px',
             display: 'flex',
             alignItems: 'center',

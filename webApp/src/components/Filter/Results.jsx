@@ -1,10 +1,16 @@
 import React from 'react'
-import { Box, Grid } from '@mui/material'
+import { Box, Grid,Typography } from '@mui/material'
 
 import ResultCard from '../Card/ResultCard';
 
 export default function Results({ data }) {
-    console.log(data)
+    if (!data) {
+        return <Typography variant="h6">No data available.</Typography>;
+      }
+    
+      if (data.length === 0) {
+        return <Typography variant="h6">No results found.</Typography>;
+      }
     return (
         <Box>
             <Grid container spacing={3}>

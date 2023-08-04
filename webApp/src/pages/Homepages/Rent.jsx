@@ -232,12 +232,14 @@ export default function Rent() {
         display: 'flex',
         alignItems: 'center'
       }}>
-        <Typography variant='h4'>Search properties to rent</Typography>
+        <Typography variant='h3' margin={'20px 20px'}>Search properties to rent</Typography>
         <Box marginLeft={'auto'}>
           <Searchbar />
         </Box>
       </Box>
+      <Box margin={'60px 0 60px 0'}>
       <Filter filterData = {setFilteredData} data={data} />
+      </Box>
       <Results data={filteredData}/>
     </>
   )
