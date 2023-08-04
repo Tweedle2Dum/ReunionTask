@@ -4,13 +4,13 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import { Skeleton, Typography } from '@mui/material';
 
-export default function ResultCard() {
+export default function ResultCard({location,price}) {
   return (
    <Card variant='outlined'>
     <Skeleton variant='rectangular' height={'200px'}></Skeleton>
     <CardContent>
-      <Typography p>PRICE</Typography>
-      <Typography p>LOCALITY</Typography>
+      <Typography p>Rs {price}/month</Typography>
+      <Typography p>{location}</Typography>
       <Typography p>ADDITIONAL ADDRESS</Typography>
 
     </CardContent>

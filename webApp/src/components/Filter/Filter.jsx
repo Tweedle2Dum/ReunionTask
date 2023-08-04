@@ -1,16 +1,59 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { useState,useEffect } from 'react';
+import { Box, Button } from '@mui/material'
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers';
+
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
-export default function Filter() {
+export default function Filter({ filterData, data }) {
+
+    let filteredArray = [...data];
+        
+    const applyFilters = () => {
+        if (filterTerm.location) {
+            filteredArray = filteredArray.filter(item => item.location === filterTerm.location);
+        }
+        if (filterTerm.priceMin) {
+            filteredArray = filteredArray.filter(item => item.price >= parseInt(filterTerm.priceMin));
+        }
+        if (filterTerm.priceMax) {
+            filteredArray = filteredArray.filter(item => item.price <= parseInt(filterTerm.priceMax));
+        }
+        if (filterTerm.date) {
+            filteredArray = filteredArray.filter(item => item.date === filterTerm.date);
+        }
+        if (filterTerm.propertyType) {
+            filteredArray = filteredArray.filter(item => item.propertyType === filterTerm.propertyType);
+        }
+        return filteredArray;
+    };
+
+    const handleClick = () =>{
+        filterData([...applyFilters()])
+    }
+
+   
+  
+    const [filterTerm, setFilterTerm] = useState({
+        location: null,
+        priceMax: null,
+        priceMin: null,
+        date: null,
+        propertyType: null
+    })
+
+
+    useEffect(()=>{
+        filterData([...applyFilters()])
+    },[])
+
+
 
 
     return (
@@ -27,14 +70,18 @@ export default function Filter() {
                 <FormControl fullWidth>
                     <InputLabel id="location">Location</InputLabel>
                     <Select
+
                         labelId="location"
                         id="calculator"
-                        value={'x'}
+                        value={filterTerm.location || ''}
                         label="Location"
+                        onChange={(e) => setFilterTerm({ ...filterTerm, location: e.target.value })}
                     >{/* to use---set state later on  */}
-                        <MenuItem value={'x'}>Ten</MenuItem>
-                        <MenuItem value={'y'}>Twenty</MenuItem>
-                        <MenuItem value={'z'}>Thirty</MenuItem>
+                        {data && data.map((obj) => {
+                            return (<MenuItem key={obj.id} value={obj.location}>{obj.location}</MenuItem>
+                            )
+                        })}
+
                     </Select>
                 </FormControl>
             </Box>
@@ -42,10 +89,9 @@ export default function Filter() {
 
             <Box label='When'>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker label='Select Move-in Date' onChange={(date) => {
-
-                        console.log(date.date())
-                    }} />
+                    <DatePicker label='Select Move-in Date'
+                        value={filterTerm.date}
+                        onChange={(date) => setFilterTerm({ ...filterTerm, date: date })} />
                 </LocalizationProvider>
             </Box>
 
@@ -58,6 +104,8 @@ export default function Filter() {
                     InputProps={{
                         startAdornment: <InputAdornment position="start">Rs</InputAdornment>,
                     }}
+                    value={filterTerm.priceMin || ''}
+                    onChange={(e) => setFilterTerm({ ...filterTerm, priceMin: e.target.value })}
                 />
                 <TextField
                     label="Max"
@@ -66,25 +114,31 @@ export default function Filter() {
                     InputProps={{
                         startAdornment: <InputAdornment position="start">Rs</InputAdornment>,
                     }}
+                    value={filterTerm.priceMax || ''}
+                    onChange={(e) => setFilterTerm({ ...filterTerm, priceMax: e.target.value })}
                 />
 
             </Box>
 
-            <Box sx={{ minWidth: '240px' }}> {/*type*/}
+            <Box sx={{ minWidth: '150px' }}> {/*type*/}
                 <FormControl fullWidth>
                     <InputLabel id="type">Property Type</InputLabel>
                     <Select
                         labelId="type"
                         id="type"
-                        value={''}
-                        label="Type"
+                        value={filterTerm.propertyType || ''}
+                        label="type"
+                        onChange={(e) => setFilterTerm({ ...filterTerm, propertyType: e.target.value })}
                     >
-                        <MenuItem value={'x'}>Ten</MenuItem>
-                        <MenuItem value={'y'}>Twenty</MenuItem>
-                        <MenuItem value={'z'}>Thirty</MenuItem>
+                        <MenuItem value={'House'}>House</MenuItem>
+                        <MenuItem value={'Villa'}>Villa</MenuItem>
+                        <MenuItem value={'Apartment'}>Apartment</MenuItem>
+
+
                     </Select>
                 </FormControl>
             </Box>
+            <Button variant='contained' size='large' onClick={handleClick}>Search</Button>
 
         </Box>
     )
